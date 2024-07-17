@@ -68,3 +68,26 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### AWS set up 
+version: 0.2
+phases:
+  build:
+    commands:
+      - yarn
+      - yarn add --dev jest-junit @babel/plugin-proposal-private-property-in-object
+      - yarn run build
+artifacts:
+  name: "build-output"
+  files:
+    - "**/*"
+reports:
+  test-report:
+    files:
+      - 'junit.xml'
+    file-format: 'JUNITXML'
+  coverage-report:
+    files:
+      - 'coverage/clover.xml'
+    file-format: 'CLOVERXML'
